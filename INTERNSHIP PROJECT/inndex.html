@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>NexaNova Trainer & Subject Portal</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>NexaNova Management Portal</h1>
+
+  <section>
+    <h2>Add New Trainer</h2>
+    <form id="addTrainerForm">
+      <input type="text" id="trainerName" placeholder="Trainer Name" required />
+      <input type="text" id="trainerId" placeholder="Employee ID" required />
+      <input type="text" id="trainerSubject" placeholder="Subject" required />
+      <button type="submit">Add Trainer</button>
+    </form>
+  </section>
+
+  <section>
+    <h2>Get All Trainers</h2>
+    <button onclick="getAllTrainers()">Fetch Trainers</button>
+  </section>
+
+  <section>
+    <h2>Delete Trainer</h2>
+    <form id="deleteTrainerForm">
+      <input type="text" id="deleteTrainerId" placeholder="Employee ID to delete" required />
+      <button type="submit">Delete Trainer</button>
+    </form>
+  </section>
+
+  <section>
+    <h2>Get Trainer by ID</h2>
+    <form id="getTrainerByIdForm">
+      <input type="text" id="getTrainerId" placeholder="Employee ID" required />
+      <button type="submit">Get Info</button>
+    </form>
+  </section>
+
+  <section>
+    <h2>Get Trainers by Subject</h2>
+    <form id="getTrainerBySubjectForm">
+      <input type="text" id="getTrainerSubject" placeholder="Subject" required />
+      <button type="submit">Get Trainers</button>
+    </form>
+  </section>
+
+  <section>
+    <h2>Add New Subject</h2>
+    <form id="addSubjectForm">
+      <input type="text" id="subjectName" placeholder="Subject Name" required />
+      <button type="submit">Add Subject</button>
+    </form>
+  </section>
+
+  <section>
+    <h2>Get All Subjects</h2>
+    <button onclick="getAllSubjects()">Fetch Subjects</button>
+  </section>
+
+  <section>
+    <h2>Get Subject & Trainers by ID</h2>
+    <form id="getSubjectByIdForm">
+      <input type="text" id="subjectId" placeholder="Subject ID" required />
+      <button type="submit">Get Details</button>
+    </form>
+  </section>
+
+  <section>
+    <h2>Output</h2>
+    <pre id="outputArea">Waiting for action...</pre>
+  </section>
+
+  <script src="managment.js"></script>
+</body>
+</html>
