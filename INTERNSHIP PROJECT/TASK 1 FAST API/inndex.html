@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>NexaNova Trainer & Subject Portal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="main-box">
+    <h1>NexaNova Trainer & Subject Portal</h1>
+
+    <div class="form-row">
+      <input type="text" id="trainerName" placeholder="Trainer Name" />
+      <input type="text" id="trainerId" placeholder="Employee ID" />
+      <input type="text" id="trainerSubject" placeholder="Subject" />
+      <button onclick="addTrainer()">Add Trainer</button>
+    </div>
+
+    <div class="form-row">
+      <button onclick="getAllTrainers()">Fetch All Trainers</button>
+    </div>
+
+    <div class="form-row">
+      <input type="text" id="deleteTrainerId" placeholder="Employee ID to delete" />
+      <button onclick="deleteTrainer()">Delete Trainer</button>
+    </div>
+
+    <div class="form-row">
+      <input type="text" id="getTrainerId" placeholder="Get Trainer by ID" />
+      <button onclick="getTrainerById()">Get Info</button>
+    </div>
+
+    <div class="form-row">
+      <input type="text" id="getTrainerSubject" placeholder="Get Trainers by Subject" />
+      <button onclick="getTrainersBySubject()">Get Trainers</button>
+    </div>
+
+    <div class="form-row">
+      <input type="text" id="subjectName" placeholder="New Subject Name" />
+      <button onclick="addSubject()">Add Subject</button>
+    </div>
+
+    <div class="form-row">
+      <button onclick="getAllSubjects()">Fetch All Subjects</button>
+    </div>
+
+    <div class="form-row">
+      <input type="text" id="subjectId" placeholder="Get Subject by ID" />
+      <button onclick="getSubjectById()">Get Details</button>
+    </div>
+
+    <div class="form-row">
+      <pre id="outputArea">Waiting for action...</pre>
+    </div>
+  </div>
+
+  <script src="managment.js"></script>
+</body>
+</html>

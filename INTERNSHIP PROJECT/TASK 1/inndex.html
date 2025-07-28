@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>NexaNova Trainer Portal</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>NexaNova Management Panel</h1>
+
+    <div class="form-row">
+      <input type="text" id="trainerName" placeholder="Trainer Name" />
+      <input type="text" id="trainerId" placeholder="Employee ID" />
+      <input type="text" id="trainerSubject" placeholder="Subject" />
+      <button onclick="addTrainer()">Add Trainer</button>
+    </div>
+
+    <div class="form-row">
+      <button onclick="getAllTrainers()">Get All Trainers</button>
+      <input type="text" id="getTrainerId" placeholder="Get Trainer by ID" />
+      <button onclick="getTrainerById()">Fetch</button>
+      <input type="text" id="getTrainerSubject" placeholder="By Subject" />
+      <button onclick="getTrainerBySubject()">Fetch</button>
+    </div>
+
+    <div class="form-row">
+      <input type="text" id="deleteTrainerId" placeholder="Delete Trainer by ID" />
+      <button onclick="deleteTrainer()">Delete</button>
+    </div>
+
+    <hr />
+
+    <div class="form-row">
+      <input type="text" id="subjectName" placeholder="Subject Name" />
+      <button onclick="addSubject()">Add Subject</button>
+      <button onclick="getAllSubjects()">Get All Subjects</button>
+      <input type="text" id="subjectId" placeholder="Subject ID with Trainers" />
+      <button onclick="getSubjectDetails()">Fetch</button>
+    </div>
+
+    <hr />
+    <div class="output">
+      <h3>Output</h3>
+      <pre id="outputArea">Waiting for action...</pre>
+    </div>
+  </div>
+
+  <script src="managment.js"></script>
+</body>
+</html>
