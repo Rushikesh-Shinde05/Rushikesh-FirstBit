@@ -1,0 +1,64 @@
+/* Universal selector */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Element selector */
+body {
+  background-color: #fdfaf6;
+  padding: 20px;
+  color: #333;
+}
+
+h1 {
+  color: #00695c;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  border: 1px solid #aaa;
+  padding: 10px;
+  text-align: left;
+}
+
+/* Class selector */
+.place-name {
+  color: #e65100;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.highlight {
+  background-color: #ffe0b2;
+}
+
+/* ID selector */
+#footer {
+  margin-top: 40px;
+  font-size: 14px;
+  text-align: center;
+  color: #777;
+}
+
+/* Group selector */
+h2, ul {
+  margin-top: 25px;
+  color: #37474f;
+}
+
+/* Descendant selector */
+.intro p {
+  font-size: 16px;
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
