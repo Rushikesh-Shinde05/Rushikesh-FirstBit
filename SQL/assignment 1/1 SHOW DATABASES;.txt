@@ -1,0 +1,38 @@
+1 SHOW DATABASES;
+2 CREATE DATABASE country;
+USE country;
+
+3 CREATE TABLE country (
+  country_id INT,
+  country_name VARCHAR(100),
+  region_id INT
+);
+
+4 DESC country;
+5 ALTER TABLE country
+
+ADD CONSTRAINT UNIQUE (country_id);
+6 CREATE TABLE jobs (
+  job_id INT PRIMARY KEY,
+  job_title VARCHAR(50) NOT NULL,
+  min_salary DECIMAL(6,2),
+  max_salary DECIMAL(7,2),
+  CHECK (max_salary <= 25000)
+);
+ 7 DROP TABLE jobs;
+
+8 CREATE TABLE jobs (
+  job_id INT PRIMARY KEY,
+  job_title VARCHAR(50) DEFAULT '',
+  min_salary DECIMAL(6,2) DEFAULT 8000,
+  max_salary DECIMAL(7,2) DEFAULT NULL
+);
+ 
+9 CREATE TABLE job_history (
+  employee_id INT,
+  start_date DATE,
+  dept_id INT
+);
+
+10 DESC job_history;
+
