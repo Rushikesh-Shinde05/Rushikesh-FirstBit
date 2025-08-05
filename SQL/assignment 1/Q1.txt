@@ -1,0 +1,24 @@
+                                                              Assignment No1
+Q1. Login to MySQL and view all databases already present. You should get
+following result :
+
+1 CREATE database expriment;
+
+2 use expriment;
+
+3 show databases;
++--------------------+
+| Database           |
++--------------------+
+| country            |
+| employee           |
+| expriment          |
+| information_schema |
+| money              |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| trainer            |
+| world              |
++--------------------+
