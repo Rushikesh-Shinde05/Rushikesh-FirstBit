@@ -1,4 +1,4 @@
-                              Assignment 2
+                             Assignment 2
 1) Create the table Member, Books and Issue without any constraints as
 mentioned in the schema description above.
 2) View the structure of the tables.
@@ -76,7 +76,7 @@ ALTER table issue
 
 8) Rename the table Issue to Lib_Issue.
 ALTER table issue
-    **-> RENAME lib\_issue;**
+    **-> RENAME lib_issue;**
 
 
 
@@ -90,3 +90,66 @@ INSERT into member (member_id,member_name,member_address,acc_open_date,membershi
 
 10) Insert at least 5 records with suitable data.
 DONE
+
+11) Modify the column Member_name. Decrease the width of the member
+name to 20 characters. (If it does not allow state the reason for that)
+ALTER TABLE member
+    -> MODIFY member_name CHAR(20);
+
+12) Try to insert a record with Max_Books_Allowed = 110, Observe the
+error that comes.
+UPDATE member
+    -> SET max_books_allowed = 110
+    -> WHERE member_id =5;
+
+13) Generate another table named Member101 using a Create command
+along with a simple SQL query on member table.
+
+
+14) Add the constraints on columns max_books_allowed and penalty_amt
+as follows
+a. max_books_allowed < 100
+b. penalty_amt maximum 1000
+Also give names to the constraints.
+ ALTER TABLE member
+    -> ADD CONSTRAINT chk_book_limit CHECK (max_books_allowed <= 100);
+
+15) Drop the table books.
+DROP TABLE book;
+
+
+16)Create table Books again as per the schema description with the
+following constraints.
+a. Book_No – Primary Key
+b. Book_Name – Not Null
+c. Category – System, Fiction, Database, RDBMS, Others.
+ CREATE TABLE book
+    -> (
+    -> book_no INT primary KEY,
+    -> book_name VARCHAR(70) NOT NULL,
+    -> author VARCHAR (20),
+    -> category ENUM('System', 'Fiction', 'Database', 'RDBMS', 'Others'),
+    -> cost INT (5));
+
+17) Insert data in Book table as follows:
+
+INSERT INTO book
+    -> (book_no,book_name,author,category,cost) VALUES
+    -> (101,"Let Us C","Denis Ritchie",'System',450),
+    -> (102,"Oracle - Complete Ref","Loni",'Database',550),
+    -> (103,"Mastering SQL","Loni",'Database',250),
+    -> (104,"PL SQL -Ref","Scott Urman",'Database',750);
+
+18) Insert more records in Book table.
+INSERT INTO book (book_no, book_name, author, category, cost)
+VALUES (105, 'Learning MySQL', 'Loni', 'Database', 250);
+
+
+19) View the data in the tables using simple SQL query.
+SELECT * FROM book;
+
+20) Insert into Book following data.
+
+ INSERT INTO book
+    -> (book_no,book_name,author,category,cost) VALUES
+    -> (106,"Nationnal Geographic","Adis Scott",'System',1000);
