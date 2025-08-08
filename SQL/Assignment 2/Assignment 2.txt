@@ -1,0 +1,92 @@
+                              Assignment 2
+1) Create the table Member, Books and Issue without any constraints as
+mentioned in the schema description above.
+2) View the structure of the tables.
+
+CREATE DATABASE books;
+ USE books;
+CREATE TABLE member (
+    member_id INT UNIQUE,
+    memberr_name VARCHAR(30),
+    member_address VARCHAR(50),
+    ACC_open_date DATE,
+    membership_type VARCHAR(20),
+    fees_paid INT,
+    max_books_allowed INT,
+    penalty_amount DECIMAL(7,2)
+);
+
+CREATE TABLE book (
+    book_no INT,
+    book_name VARCHAR(30),
+    author_name VARCHAR(30),
+    cost DECIMAL(7,2),
+    category CHAR(10)
+);
+
+CREATE TABLE issue (
+    lib_issue_id INT,
+    book_no INT,
+    member_id INT,
+    issue_date DATE,
+    return_date DATE
+);
+
+DESC member;
+DESC book;
+DESC issue;
+
+3) Drop the Member table
+ DROP table member;
+
+
+4) Create the table Member again as per the schema description with the
+following constraints.
+a. Member_Id – Primary Key
+b. Membership_type - ‘Lifetime’,’ Annual’, ‘Half Yearly’,’ Quarterly’
+
+CREATE table member
+    -> (
+
+    -> member_id INT PRIMARY KEY,
+    -> member_name VARCHAR(30),
+    -> member_address VARCHAR(50),
+    -> acc_open_date DATE,
+    -> membership_type VARCHAR(20)CHECK(membership_type IN('Lifetime','Annual','Half Yearly','Quaterly')),
+    -> fess_paid INT,
+    -> max_books_allowed INT,
+    -> penalty_amount DECIMAL(7,2));
+
+5) Modify the table Member increase the width of the member name to 30
+characters.
+
+      **ALTER table member**
+
+    **-> MODIFY column member\_name CHAR(30);**
+
+
+
+
+6) Add a column named as Reference of Char(30) to Issue table.
+ALTER table issue
+    **-> ADD COLUMN referance CHAR(30);**
+
+
+
+
+8) Rename the table Issue to Lib_Issue.
+ALTER table issue
+    **-> RENAME lib\_issue;**
+
+
+
+
+
+
+
+9) Insert following data in table Member
+INSERT into member (member_id,member_name,member_address,acc_open_date,membership_type,fess_paid,max_books_allowed,penalty_amount) VALUES (1,"Richa Sharma","PUNE","10-12-05","Lifetime",25000,5,50);
+
+
+10) Insert at least 5 records with suitable data.
+DONE
