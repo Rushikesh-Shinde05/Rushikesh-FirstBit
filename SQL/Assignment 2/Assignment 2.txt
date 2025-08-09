@@ -153,3 +153,32 @@ SELECT * FROM book;
  INSERT INTO book
     -> (book_no,book_name,author,category,cost) VALUES
     -> (106,"Nationnal Geographic","Adis Scott",'System',1000);
+
+
+21,22)
+ ALTER TABLE lib_issue
+    -> RENAME TO issue;
+
+
+23) As per the given structure Create table Issue again with following
+constraints.
+ CREATE TABLE issue
+    -> (
+    -> lib_issue_no INT PRIMARY KEY,
+    -> book_no INT,
+    -> member_id INT,
+    -> issue_date DATE,
+    -> return_date DATE,
+    -> CONSTRAINT fk_book FOREIGN KEY (book_no) references book(book_no),
+    -> CONSTRAINT fk_member FOREIGN KEY (member_id) references member(member_id));
+
+24)Insert following data into Issue table.
+INSERT INTO Issue
+(lib_issue_no, book_no, member_id, issue_date) VALUES
+(7001, 101, 1, '2010-11-06'),
+(7002, 102, 2, '2025-11-06'),
+(7003, 104, 1, '2015-01-06'),
+(7004, 101, 1, '2004-07-06'),
+(7005, 104, 2, '2015-10-06'),
+(7006, 101, 3, '2018-02-06');
+
