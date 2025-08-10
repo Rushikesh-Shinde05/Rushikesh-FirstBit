@@ -4,23 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>Button with List</title>
 </head>
 <body>
-    
-    <div class= "img"><img  src="f1 white orange.jpg" alt="" width="500px"></div>
-  
-<div class="button">
-      <button>Button1</button>
-    <button>Button2</button>
-    <button>Button3</button>
+
+    <div class="img">
+        <img src="f1 white orange.jpg" alt="" width="500px">
+    </div>
+<div class="list-item">
+  <input type="checkbox" id="check1">
+  <label for="dropdown1">Button 1:</label>
+  <select id="dropdown1">
+    <option value="">Select</option>
+    <option value="Red">Red</option>
+    <option value="Green">Green</option>
+    <option value="Blue">Blue</option>
+  </select>
+  <button id="apply1">Apply</button>
 </div>
 
-    <div class="checkbox">
-        <input type="checkbox" id="check1" name="check1"><label for="check1">check1</label>
-    <input type="checkbox" id="check2 name="check2"><label for="check2">check2</label>
-    <input type="checkbox" id="check3" name="check3"><label for="check3">check3</label>
-    </div>
+<div class="list-item">
+  <input type="checkbox" id="check2">
+  <label for="dropdown2">Button 2:</label>
+  <select id="dropdown2">
+    <option value="">Select</option>
+    <option value="Small">Small</option>
+    <option value="Medium">Medium</option>
+    <option value="Large">Large</option>
+  </select>
+  <button id="apply2">Apply</button>
+</div>
 
+<div class="list-item">
+  <input type="checkbox" id="check3">
+  <label for="dropdown3">Button 3:</label>
+  <select id="dropdown3">
+    <option value="">Select</option>
+    <option value="Yes">Yes</option>
+    <option value="No">No</option>
+  </select>
+  <button id="apply3">Apply</button>
+</div>
+
+<script src="img.js" defer></script>
 </body>
+
 </html>

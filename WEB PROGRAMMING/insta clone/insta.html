@@ -15,7 +15,6 @@
     <div class="logo">
       <img src="Instagram_icon.png" alt="Instagram Logo" />
     </div>
-    
   </header>
 
   <main>
@@ -25,6 +24,23 @@
         <span class="username">USER_NAME</span>
       </div>
       <img src="red-bull-rb21-2025-suzuka-gp-livery-honda.jpeg" alt="Uploaded Post" class="post-img" />
+
+      <!-- Controls -->
+      <div class="controls">
+        <label for="optionSelect">Choose Option:</label>
+        <select id="optionSelect">
+          <option value="">Select an option</option>
+          <option value="Like">Like</option>
+          <option value="Comment">Comment</option>
+          <option value="Save">Save</option>
+        </select>
+
+        <input type="checkbox" id="applyCheck">
+        <label for="applyCheck">Enable Action</label>
+
+        <button id="applyBtn">Apply</button>
+      </div>
+
       <div class="post-actions">
         <i class="fa-regular fa-heart"></i>
         <i class="fa-regular fa-comment"></i>
@@ -34,6 +50,7 @@
       <p class="post-caption"><strong>USER_NAME</strong> Just uploaded a new photo! </p>
     </div>
   </main>
+
+  <script src="script.js"></script>
 </body>
-<link rel="stylesheet" href="img.js">
 </html>

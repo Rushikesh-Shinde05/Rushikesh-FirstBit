@@ -182,3 +182,54 @@ INSERT INTO Issue
 (7005, 104, 2, '2015-10-06'),
 (7006, 101, 3, '2018-02-06');
 
+25) Remove the constraints on Issue table
+ALTER TABLE issue
+    -> DROP FOREIGN KEY fk_book;
+    -> DROP FOREIGN KEY fk_member;
+
+
+26) Insert a record in Issue table. The member_id should not exist in member table.
+INSERT INTO Issue (lib_issue_no, book_no, member_id)
+    -> VALUES (1, 101, 99);
+
+27) Now enable the constraints of Issue table. Observe the error
+Duplicate check constraint name 'chk_book_limit'.
+
+
+
+28) Delete the record inserted at Q-27) and enable the constraints.
+ DELETE FROM issue
+    -> WHERE lib_issue_no =1;
+
+29) Try to delete the record of member id 1 from member table and observe the error .
+DELETE FROM issue
+    -> WHERE member_id =1;
+
+30) View the data and structure of all the three tables Member,Issue, Book.
+DESC member;
+ SELECT * FROM member;
+[same as it is]
+
+
+31) Modify the Return_Date of 7004,7005 to 15 days after the Issue_date.
+UPDATE issue
+    -> SET return_date = '2015-10-21'
+    -> WHERE lib_issue_no = 7005;
+
+32) Remove all the records from Issue table where member_ID is 1
+and Issue date in before 10-Dec-06.
+DELETE FROM Issue
+WHERE member_id = 1
+  AND issue_date < '2006-12-10';
+
+
+33) Remove all the records from Book table with category other than RDBMS and Database.
+ DELETE FROM book
+    -> WHERE category NOT IN ('RDBMS','Database');
+
+
+34) Remove the table Member.
+35) Remove the table Book.
+DROP TABLE member;
+DROP TABLE book;
+
