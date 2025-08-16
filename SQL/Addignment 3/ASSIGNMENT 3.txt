@@ -1,4 +1,6 @@
-                                                                       ASSIGNMENT 3
+USE assignment3;                                                                       ASSIGNMENT 3
+
+
 1. Write a SQL statement to insert a record as follows: 
 Employees :
  key)' at line 10
@@ -41,5 +43,63 @@ mysql> INSERT INTO employee (emp_id,first_name,last_name,phone_num,hire_date,job
     -> (80,"sales",145,2500);
 
 2. Write a SQL statement to insert 3 rows by a single insert statement. 
-want to add multiple ros/data in a column
+want to add multiple rows/data in a column
 
+3 Write a SQL statement to insert one row in jobs table to ensure that no duplicate 
+value will be entered in the job_id column.
+CREATE TABLE job
+(
+job_id VARCHAR(20) PRIMARY KEY,        // using primary key so no duplicate will allowed in job_id
+job_title VARCHAR(50),
+min_sal INT,
+max_sal INT);
+
+
+4. Write SQL statement to increment salary of each emp by 10%. 
+ UPDATE job
+    -> SET min_sal = min_sal *1.10,
+    -> max_sal = max_sal*1.10;
+
+
+5. Write a SQL statement to change the email column of employees table with 'not 
+available' for those employees whose department_id is 80 and gets a 
+commission is less than .20% 
+UPDATE employees
+SET email = 'not available'
+WHERE department_id = 80
+  AND commission_pct < 0.20;
+
+
+
+ UPDATE employee                           //adding data to email without using auto increment 
+    -> SET email = CASE emp_id
+    -> WHEN 100 THEN 'sking'
+    -> WHEN 101 THEN 'nkochhar'
+    -> WHEN 102 THEN 'ldehaan'
+    -> WHEN 103 THEN 'ahunold'
+    -> WHEN 104 THEN 'dustin'
+    -> WHEN 105 THEN 'vapatabal'
+    -> WHEN 106 THEN 'dlorentz'
+    -> WHEN 107 THEN 'ngreenre'
+    -> WHEN 108 THEN 'dfaviet'
+    -> END
+
+
+
+
+6. Write a SQL statement to change the email column of employees table with 'not 
+available' for those employees who belongs to the 'Purchasing' department. 
+
+UPDATE employees e
+JOIN departments d 
+   ON e.department_id = d.department_id
+SET e.email = 'not available'
+WHERE d.department_name = 'Purchasing';
+
+
+
+7. Write a SQL statement to change the email and commission_pct column of 
+employees table with 'not available' and 0.10 for all employees.
+ UPDATE employee
+    -> SET email = 'not avilable',
+    -> commision_pct = 010;
