@@ -1,0 +1,45 @@
+                                                                       ASSIGNMENT 3
+1. Write a SQL statement to insert a record as follows: 
+Employees :
+ key)' at line 10
+mysql> CREATE TABLE employee
+    -> (
+    -> emp_id INT PRIMARY KEY,
+    -> first_name VARCHAR(10) not null,
+    -> last_name VARCHAR (10) not null,
+    -> phone_num INT not null unique,
+    -> hire_date DATE,
+    -> job_id INT,
+    -> commision_pct INT,
+    -> department_id INT );
+
+
+mysql> INSERT INTO employee (emp_id,first_name,last_name,phone_num,hire_date,job_id,commision_pct,department_id) VALUES (104,"Bruce","Pataballa","VPATAA569","1987-06-22","SA_MAN",0.00,30),
+    -> (105,"David","Austin","BERNST145","1987-06-28","SA_MAN",0.00,60),
+    -> (106,"Valli","Lorentz","VPATABAL5","1987-06-28","SA_MAN",0.00,114),
+    -> (107,"Nancy","Fanvlet","NGREENBE","1987-06-26","SA_MAN",0.00,108),
+    -> (108,"Daniel","Faviet","DFAVIET","1987-06-26","SA_MAN",0.00,80);
+
+
+ CREATE TABLE department
+    -> (
+    -> dept_id INT PRIMARY KEY,
+    -> dept_name VARCHAR(20),
+    -> manager_id INT,
+    -> location_id INT);
+
+ INSERT INTO department
+    -> (dept_id,dept_name,manager_id,location_id)
+    -> VALUES
+    -> (10,"administration",200,1700),
+    -> (20,"marketing",201,1800),
+    -> (30,"purchasing",114,1700),
+    -> (40,"hr",203,2400),
+    -> (50,"shipping",121,1500),
+    -> (60,"it",103,1400),
+    -> (70,"public relation",204,2700),
+    -> (80,"sales",145,2500);
+
+2. Write a SQL statement to insert 3 rows by a single insert statement. 
+want to add multiple ros/data in a column
+
