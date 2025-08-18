@@ -15,3 +15,11 @@ mysql> SELECT DISTINCT dept_id
 by first name, descending
  SELECT * FROM employee ORDER BY first_name asc;
 
+4. Write a query to get the names (first_name, last_name), salary, PF of all 
+the employees (PF is calculated as 15% of salary). 
+
+
+
+
+5. Write a query to get the employee ID, names (first_name, last_name), 
+salary in ascending order of salary.

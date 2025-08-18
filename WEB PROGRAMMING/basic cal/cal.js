@@ -15,7 +15,6 @@ buttons.forEach(function(button) {
         expression = result.toString(); 
       }
     } 
-
     else {
       expression = expression + value;
       display.value = expression;
