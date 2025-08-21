@@ -1,0 +1,70 @@
+                                                     SQL END MODULE TEST SET(B)
+1. Retrieve the names of all customers from the `Customers` table, sorted in alphabetical order. 
+ANS> SELECT cust_name   FROM Customers ORDER BY cust_name ASC;
+
+2. Fetch the top 10 most expensive products from the `Products` table. 
+ANS> SELECT Most_exp
+FROM Product
+WHERE Most_exp>10;
+
+3. Write a query to get the second-highest salary from the `Employees` table. 
+ANS> SELECT max(salary) 
+FROM employee
+WHERE salary < (SELECT max(salary)
+
+
+ FROM employee);
+
+4. Get the total count of customers from each city in the `Customers` table.
+ANS> SELECT count(cust),city
+FROM Customer 
+GROUP BY city;
+
+5. Retrieve department-wise total salary from the `Employees` table but only include 
+departments where the total salary is greater than 2,00,000.
+ANS> SELECT count(salary) AS 'Total_sal'
+FROM employee
+WHERE Total_sal>20000;
+
+6. Extract only the last four characters of the `phone_number` column and first three characters 
+from `customerName` columns from the `Customers` table. 
+ANS> SELECT * FROM Customer
+WHERE Phone_num LIKE "%____"
+AND 
+Cust_name LIKE"___%";
+
+
+7. Write a query to retrieve products where the `product_name` contains "Pro".
+ANS> SELECT product_name
+     FROM product
+     WHERE product_name LIKE '%pro';
+
+8. Fetch the total number of students per course from the `Students` table, only for courses that 
+have at least 30 students enrolled. 
+ANS> SELECT COUNT(S_id),Course 
+FROM student 
+WHERE s_id = (
+
+
+10. Get the highest and lowest salary per department from the `Employees` table. 
+SELECT min(salary) AS 'low_salery' max(salary) AS ' High sal'
+FROM employee
+
+
+11. What does the following query return? 
+SELECT SUBSTRING('Database', 1, 4); 
+a) Data
+
+12. Which clause is used to sort the results in descending order? 
+c) ORDER BY DESC 
+
+13. What is the default sorting order of `ORDER BY` if no direction (ASC/DESC) is specified?
+a) ASC 
+
+
+14. What will be the output of the following query? 
+SELECT ROUND(15.678, 2);
+d) 16 
+
+15. Which SQL function is used to count the number of rows in a table
+b) COUNT()
