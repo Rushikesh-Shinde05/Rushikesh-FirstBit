@@ -19,17 +19,19 @@ ctx.stroke();
  <canvas id="myCanvas" width="200" height="200" style="border:1px solid green;"></canvas>
 
   <script>
-    canvas = document.getElementById('myCanvas');
-     ctx = canvas.getContext('2d');
-   
+var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
+ 
+// Create gradient
+var grd = ctx.createRadialGradient(75, 50, 5, 90, 60, 100);
+grd.addColorStop(0, "red");
+grd.addColorStop(1, "black");
 
-    // Draw a circle
-    ctx.beginPath();
-    ctx.arc(150, 150, 50, 0, Math.PI*2); // x, y, radius, start angle, end angle
-    
-    ctx.fill();
 
-  </script>
+// Fill with gradient
+ctx.fillStyle = grd;
+ctx.fillRect(10, 10, 150, 80);
+</script>
 
 
 </body>
