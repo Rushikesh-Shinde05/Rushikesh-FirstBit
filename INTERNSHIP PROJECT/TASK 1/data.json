@@ -1,10 +1,35 @@
 {
   "trainers": [
-    { "name": "Alice", "empId": "T101", "subject": "Math" },
-    { "name": "Bob", "empId": "T102", "subject": "Science" }
+    {
+      "name": "Alice",
+      "empId": "T101",
+      "subject": "Math"
+    },
+    {
+      "name": "Bob",
+      "empId": "T102",
+      "subject": "Science"
+    },
+    {
+      "name": "avs",
+      "empId": "123",
+      "subject": "as"
+    }
   ],
   "subjects": [
-    { "id": "S201", "name": "Math", "trainers": ["Alice"] },
-    { "id": "S202", "name": "Science", "trainers": ["Bob"] }
+    {
+      "id": "S201",
+      "name": "Math",
+      "trainers": [
+        "Alice"
+      ]
+    },
+    {
+      "id": "S202",
+      "name": "Science",
+      "trainers": [
+        "Bob"
+      ]
+    }
   ]
 }
