@@ -1,0 +1,15 @@
+{
+  "trainers": [
+    { "name": "Alice", "empId": "T101", "subject": "Math" },
+    { "name": "Bob", "empId": "T102", "subject": "Science" },
+    { "name": "Charlie", "empId": "T103", "subject": "English" },
+    { "name": "Diana", "empId": "T104", "subject": "History" },
+    { "name": "Eve", "empId": "T105", "subject": "Math" }
+  ],
+  "subjects": [
+    { "id": "S201", "name": "Math", "trainers": ["Alice", "Eve"] },
+    { "id": "S202", "name": "Science", "trainers": ["Bob"] },
+    { "id": "S203", "name": "English", "trainers": ["Charlie"] },
+    { "id": "S204", "name": "History", "trainers": ["Diana"] }
+  ]
+}

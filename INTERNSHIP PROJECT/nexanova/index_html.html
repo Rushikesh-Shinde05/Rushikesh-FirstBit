@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NexaNova Trainer Portal</title>
+  <link rel="stylesheet" href="style_css.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>NexaNova Management Portal</h1>
+      <p>Comprehensive Trainer & Subject Management System</p>
+    </div>
+
+    <div class="content">
+      <div class="stats">
+        <div class="stat-card">
+          <div class="stat-number" id="trainerCount">0</div>
+          <div class="stat-label">Total Trainers</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="subjectCount">0</div>
+          <div class="stat-label">Total Subjects</div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Trainer Management</h2>
+        <div class="form-row">
+          <input type="text" id="trainerName" placeholder="Trainer Name" />
+          <input type="text" id="trainerId" placeholder="Employee ID" />
+          <input type="text" id="trainerSubject" placeholder="Subject" />
+          <button onclick="addTrainer()">➕ Add Trainer</button>
+        </div>
+
+        <div class="form-row">
+          <button onclick="getAllTrainers()" class="btn-info">👥 Show All Trainers</button>
+          <input type="text" id="getTrainerId" placeholder="Search by Employee ID" />
+          <button onclick="getTrainerById()" class="btn-info">🔍 Search</button>
+        </div>
+
+        <div class="form-row">
+          <input type="text" id="getTrainerSubject" placeholder="Filter by Subject" />
+          <button onclick="getTrainerBySubject()" class="btn-info">📚 Filter</button>
+          <input type="text" id="deleteTrainerId" placeholder="Delete by Employee ID" />
+          <button onclick="deleteTrainer()" class="btn-danger">🗑️ Delete</button>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Subject Management</h2>
+        <div class="form-row">
+          <input type="text" id="subjectName" placeholder="Subject Name" />
+          <button onclick="addSubject()">➕ Add Subject</button>
+          <button onclick="getAllSubjects()" class="btn-info">📋 Show All Subjects</button>
+        </div>
+
+        <div class="form-row">
+          <input type="text" id="subjectId" placeholder="Subject Name for Details" />
+          <button onclick="getSubjectDetails()" class="btn-info">🔍 Get Subject Details</button>
+        </div>
+      </div>
+
+      <div class="output-section">
+        <h3>Results</h3>
+        <div id="outputArea">
+          <div class="empty-state">
+            <p>No data to display. Start by adding trainers or subjects!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="management_js.js"></script>
+</body>
+</html>
