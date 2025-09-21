@@ -135,6 +135,12 @@ class Hr extends Employee
 		System.out.println("Commision is:"+Commision );
 	}
 } //hr class ends here
+ class AreaManager extends SalesManeger
+ {
+	 String AreaName;
+	 
+ }
+
 
 
 
@@ -147,17 +153,12 @@ class Test
                 SalesManeger sm1 = new SalesManeger(2, "xyz", 10000, 20000, 5);
                 Admin a1 = new Admin(2, "abc", 10000, 30000);
                 Hr h1 = new  Hr(4, "jsh", 56004, 1230);
+                AreaManager am1 = new AreaManager();
                 e1.display();
                 sm1.display();
                 a1.display();
                 h1.display();
+                am1.display();
 
-
-              
-
-
-                   
-
-                
     }
 }
