@@ -3,76 +3,235 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NexaNova Trainer Portal</title>
-  <link rel="stylesheet" href="style_css.css" />
+  <title>NexaNova Portal</title>
+  <link rel="stylesheet" href="style_css.css">
 </head>
 <body>
-  <div class="container">
-    <div class="header">
-      <h1>NexaNova Management Portal</h1>
-      <p>Comprehensive Trainer & Subject Management System</p>
-    </div>
-
-    <div class="content">
-      <div class="stats">
-        <div class="stat-card">
-          <div class="stat-number" id="trainerCount">0</div>
-          <div class="stat-label">Total Trainers</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-number" id="subjectCount">0</div>
-          <div class="stat-label">Total Subjects</div>
-        </div>
+  <!-- Landing Page -->
+  <div id="landingPage" class="page active">
+    <div class="landing-container">
+      <div class="landing-header">
+        <h1>🎓 NexaNova Portal</h1>
+        <p>Welcome to the Learning Management System</p>
       </div>
-
-      <div class="section">
-        <h2>Trainer Management</h2>
-        <div class="form-row">
-          <input type="text" id="trainerName" placeholder="Trainer Name" />
-          <input type="text" id="trainerId" placeholder="Employee ID" />
-          <input type="text" id="trainerSubject" placeholder="Subject" />
-          <button onclick="addTrainer()">➕ Add Trainer</button>
+      <div class="role-selection">
+        <div class="role-card" onclick="showAuth('admin')">
+          <div class="role-icon">👨‍💼</div>
+          <h2>Admin Portal</h2>
+          <p>Manage trainers, subjects, and system administration</p>
+          <button class="role-btn">Access Admin Portal</button>
         </div>
-
-        <div class="form-row">
-          <button onclick="getAllTrainers()" class="btn-info">👥 Show All Trainers</button>
-          <input type="text" id="getTrainerId" placeholder="Search by Employee ID" />
-          <button onclick="getTrainerById()" class="btn-info">🔍 Search</button>
-        </div>
-
-        <div class="form-row">
-          <input type="text" id="getTrainerSubject" placeholder="Filter by Subject" />
-          <button onclick="getTrainerBySubject()" class="btn-info">📚 Filter</button>
-          <input type="text" id="deleteTrainerId" placeholder="Delete by Employee ID" />
-          <button onclick="deleteTrainer()" class="btn-danger">🗑️ Delete</button>
-        </div>
-      </div>
-
-      <div class="section">
-        <h2>Subject Management</h2>
-        <div class="form-row">
-          <input type="text" id="subjectName" placeholder="Subject Name" />
-          <button onclick="addSubject()">➕ Add Subject</button>
-          <button onclick="getAllSubjects()" class="btn-info">📋 Show All Subjects</button>
-        </div>
-
-        <div class="form-row">
-          <input type="text" id="subjectId" placeholder="Subject Name for Details" />
-          <button onclick="getSubjectDetails()" class="btn-info">🔍 Get Subject Details</button>
-        </div>
-      </div>
-
-      <div class="output-section">
-        <h3>Results</h3>
-        <div id="outputArea">
-          <div class="empty-state">
-            <p>No data to display. Start by adding trainers or subjects!</p>
-          </div>
+        <div class="role-card" onclick="showAuth('student')">
+          <div class="role-icon">👨‍🎓</div>
+          <h2>Student Portal</h2>
+          <p>Access courses, materials, and track your progress</p>
+          <button class="role-btn">Access Student Portal</button>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- Admin Auth Page -->
+  <div id="adminAuthPage" class="page">
+    <div class="auth-container">
+      <div class="auth-header">
+        <h2>👨‍💼 Admin Access</h2>
+        <p id="adminAuthTitle">Login to your account</p>
+      </div>
+      <div class="auth-body">
+        <button class="back-btn" onclick="showPage('landingPage')">← Back to Home</button>
+        <div id="adminMessage" class="message" style="display: none;"></div>
+        
+        <form id="adminLoginForm">
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" id="adminLoginEmail" placeholder="admin@nexanova.com" required>
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" id="adminLoginPassword" placeholder="Enter password" required>
+          </div>
+          <button type="submit">Login</button>
+          <div class="toggle-auth">
+            Don't have an account? <a onclick="toggleAdminAuth()">Register here</a>
+          </div>
+        </form>
+
+        <form id="adminRegisterForm" style="display: none;">
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" id="adminRegName" placeholder="John Doe" required>
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" id="adminRegEmail" placeholder="admin@nexanova.com" required>
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" id="adminRegPassword" placeholder="Create password" required>
+          </div>
+          <div class="form-group">
+            <label>Confirm Password</label>
+            <input type="password" id="adminRegConfirmPassword" placeholder="Re-enter password" required>
+          </div>
+          <div class="form-group">
+            <label>Admin Access Code</label>
+            <input type="text" id="adminRegCode" placeholder="Enter admin code" required>
+          </div>
+          <button type="submit">Register</button>
+          <div class="toggle-auth">
+            Already have an account? <a onclick="toggleAdminAuth()">Login here</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Student Auth Page -->
+  <div id="studentAuthPage" class="page">
+    <div class="auth-container">
+      <div class="auth-header">
+        <h2>👨‍🎓 Student Access</h2>
+        <p id="studentAuthTitle">Login to your account</p>
+      </div>
+      <div class="auth-body">
+        <button class="back-btn" onclick="showPage('landingPage')">← Back to Home</button>
+        <div id="studentMessage" class="message" style="display: none;"></div>
+        
+        <form id="studentLoginForm">
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" id="studentLoginEmail" placeholder="student@example.com" required>
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" id="studentLoginPassword" placeholder="Enter password" required>
+          </div>
+          <button type="submit">Login</button>
+          <div class="toggle-auth">
+            Don't have an account? <a onclick="toggleStudentAuth()">Register here</a>
+          </div>
+        </form>
+
+        <form id="studentRegisterForm" style="display: none;">
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" id="studentRegName" placeholder="Jane Smith" required>
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" id="studentRegEmail" placeholder="student@example.com" required>
+          </div>
+          <div class="form-group">
+            <label>Roll Number</label>
+            <input type="text" id="studentRegRoll" placeholder="2024001" required>
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" id="studentRegPassword" placeholder="Create password" required>
+          </div>
+          <div class="form-group">
+            <label>Confirm Password</label>
+            <input type="password" id="studentRegConfirmPassword" placeholder="Re-enter password" required>
+          </div>
+          <button type="submit">Register</button>
+          <div class="toggle-auth">
+            Already have an account? <a onclick="toggleStudentAuth()">Login here</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Admin Management Portal -->
+  <div id="adminPortal" class="page">
+    <div class="container">
+      <div class="header">
+        <h1>NexaNova Management Portal</h1>
+        <p>Comprehensive Trainer & Subject Management System</p>
+        <button class="logout-btn" onclick="logout()">🚪 Logout</button>
+      </div>
+
+      <div class="content">
+        <div class="stats">
+          <div class="stat-card">
+            <div class="stat-number" id="trainerCount">0</div>
+            <div class="stat-label">Total Trainers</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" id="subjectCount">0</div>
+            <div class="stat-label">Total Subjects</div>
+          </div>
+        </div>
+
+        <div class="section">
+          <h2>Trainer Management</h2>
+          <div class="form-row">
+            <input type="text" id="trainerName" placeholder="Trainer Name" />
+            <input type="text" id="trainerId" placeholder="Employee ID" />
+            <input type="text" id="trainerSubject" placeholder="Subject" />
+            <button onclick="addTrainer()">➕ Add Trainer</button>
+          </div>
+
+          <div class="form-row">
+            <button onclick="getAllTrainers()" class="btn-info">👥 Show All Trainers</button>
+            <input type="text" id="getTrainerId" placeholder="Search by Employee ID" />
+            <button onclick="getTrainerById()" class="btn-info">🔍 Search</button>
+          </div>
+
+          <div class="form-row">
+            <input type="text" id="getTrainerSubject" placeholder="Filter by Subject" />
+            <button onclick="getTrainerBySubject()" class="btn-info">📚 Filter</button>
+            <input type="text" id="deleteTrainerId" placeholder="Delete by Employee ID" />
+            <button onclick="deleteTrainer()" class="btn-danger">🗑️ Delete</button>
+          </div>
+        </div>
+
+        <div class="section">
+          <h2>Subject Management</h2>
+          <div class="form-row">
+            <input type="text" id="subjectName" placeholder="Subject Name" />
+            <button onclick="addSubject()">➕ Add Subject</button>
+            <button onclick="getAllSubjects()" class="btn-info">📋 Show All Subjects</button>
+          </div>
+
+          <div class="form-row">
+            <input type="text" id="subjectId" placeholder="Subject Name for Details" />
+            <button onclick="getSubjectDetails()" class="btn-info">🔍 Get Subject Details</button>
+          </div>
+        </div>
+
+        <div class="output-section">
+          <h3>Results</h3>
+          <div id="outputArea">
+            <div class="empty-state">
+              <p>No data to display. Start by adding trainers or subjects!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
+
+<!-- Firebase Authentication -->
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"></script>
+
+<script>
+  const firebaseConfig = {
+  apiKey: "AIzaSyAVKpzslG2vQZw-LK6wTAmWj5mm7aGGPkQ",
+  authDomain: "nexanova-c3fd1.firebaseapp.com",
+  projectId: "nexanova-c3fd1",
+  storageBucket: "nexanova-c3fd1.firebasestorage.app",
+  messagingSenderId: "747203123201",
+  appId: "1:747203123201:web:f23cd9b4dc1b027660c800",
+  measurementId: "G-7KVT25JS4R"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+</script>
   <script src="management_js.js"></script>
 </body>
 </html>
