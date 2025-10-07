@@ -212,26 +212,33 @@
       </div>
     </div>
   </div>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
+<!-- Firebase SDK - Compat Version -->
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
 
-<!-- Firebase Authentication -->
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"></script>
-
+<!-- Firebase Configuration & Initialization -->
 <script>
+  // Your Firebase Config
   const firebaseConfig = {
-  apiKey: "AIzaSyAVKpzslG2vQZw-LK6wTAmWj5mm7aGGPkQ",
-  authDomain: "nexanova-c3fd1.firebaseapp.com",
-  projectId: "nexanova-c3fd1",
-  storageBucket: "nexanova-c3fd1.firebasestorage.app",
-  messagingSenderId: "747203123201",
-  appId: "1:747203123201:web:f23cd9b4dc1b027660c800",
-  measurementId: "G-7KVT25JS4R"
-};
+    apiKey: "AIzaSyAVKpzslG2vQZw-LK6wTAmWj5mm7aGGPkQ",
+    authDomain: "nexanova-c3fd1.firebaseapp.com",
+    projectId: "nexanova-c3fd1",
+    storageBucket: "nexanova-c3fd1.firebasestorage.app",
+    messagingSenderId: "747203123201",
+    appId: "1:747203123201:web:f23cd9b4dc1b027660c800",
+    measurementId: "G-7KVT25JS4R"
+  };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  
+  // Initialize Firebase Auth
+  const auth = firebase.auth();
+  
+  console.log('🔥 Firebase initialized successfully!');
 </script>
-  <script src="management_js.js"></script>
+
+<!-- Your App Logic -->
+<script src="management_js.js"></script>
 </body>
 </html>

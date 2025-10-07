@@ -485,4 +485,135 @@ tr:nth-child(even) td {
   .stats {
     flex-direction: column;
   }
+  /* Page Management */
+.page {
+  display: none;
+}
+
+.page.active {
+  display: block;
+}
+
+/* Auth Styles */
+.landing-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+  overflow: hidden;
+}
+
+.landing-header {
+  background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+  color: white;
+  padding: 40px;
+  text-align: center;
+}
+
+.landing-header h1 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+}
+
+.role-selection {
+  padding: 50px 40px;
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.role-card {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 15px;
+  padding: 40px 30px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 3px solid transparent;
+  flex: 1;
+  min-width: 250px;
+  max-width: 350px;
+}
+
+.role-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+  border-color: #4CAF50;
+}
+
+.role-icon {
+  font-size: 4em;
+  margin-bottom: 20px;
+}
+
+.role-btn {
+  width: 100%;
+}
+
+.auth-container {
+  max-width: 450px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+  overflow: hidden;
+}
+
+.auth-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 30px;
+  text-align: center;
+}
+
+.auth-body {
+  padding: 40px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.toggle-auth {
+  text-align: center;
+  margin-top: 20px;
+  color: #6c757d;
+}
+
+.toggle-auth a {
+  color: #4CAF50;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.toggle-auth a:hover {
+  text-decoration: underline;
+}
+
+.back-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #6c757d 0%, #5a6268 100%);
+  margin-bottom: 20px;
+}
+
+.logout-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: #f44336;
+}
+
+.logout-btn:hover {
+  background: #d32f2f;
+}
 }
