@@ -1,19 +1,14 @@
 //Q2. Search the given number in array.
 
 #include<stdio.h>
-int search(int *find);
 void main()
 {
-int find;
-search(&find);
-}
-int search(int *find){
-		int arr[] = {1,2,3,4,5};
-	 *find = 2;
+	int arr[] = {1,2,3,4,5};
+	int num = 1;
 	int index =sizeof (arr) / sizeof (arr[0]);
 	for(int i = 0; i< index; i++){
-		if (arr[i] == *find){
-		printf("%d %d\n",*find,i);
+		if (arr[i] == num){
+		printf("%d %d\n",num,index);
 		}
 		
 	}

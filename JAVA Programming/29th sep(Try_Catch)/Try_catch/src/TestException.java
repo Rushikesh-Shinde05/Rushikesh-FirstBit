@@ -25,7 +25,7 @@ class Voter{
 		{
 		System.out.println(ve); 
 		}
-	}//Validation ends here
+	}//Valideation ends here
 } //Voter class ends here
 
 public class TestException {
