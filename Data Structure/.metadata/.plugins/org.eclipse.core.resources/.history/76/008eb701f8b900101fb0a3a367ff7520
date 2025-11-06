@@ -1,0 +1,16 @@
+package p1;
+
+public class MyLinkedList {
+    Node start;
+
+   public void add(int data) {
+	   
+	Node temp = new Node(data, null);
+	start = temp;
+	
+   }
+   System.out.println("data");
+   
+   System.out.println("hello");
+   
+}

@@ -1,0 +1,14 @@
+package p1;
+
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+        MyLinkedList Myll = new MyLinkedList(); 
+       Myll.add(10);
+       Myll.add(20);
+       Myll.add(30);
+       
+       Myll.display();
+	}
+}

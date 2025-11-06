@@ -1,0 +1,6 @@
+INDEX VERSION 1.134+C:\Users\Asus\Downloads\FirstBit\Data Structure\.metadata\.plugins\org.eclipse.jdt.core
+1865797976.index
+2272576656.index
+562557293.index
+4269759981.index
+1693017503.index
