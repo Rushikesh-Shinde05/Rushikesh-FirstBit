@@ -1,9 +1,3 @@
-
-
-
-
-
-
 // (Keep all your existing trainer/subject management functions here)
 const API_URL = "http://localhost:5000";
 
@@ -200,4 +194,5 @@ async function getAllTrainers() {
   showOutput(trainers);
 }
 
-//
+
+
