@@ -76,7 +76,7 @@
           </div>
           <div class="form-group">
             <label>Admin Access Code</label>
-            <input type="text" id="adminRegCode" placeholder="Enter admin code" required>
+            <input type="text" id="adminRegCode" placeholder="Enter admin code (ADMIN2024)" required>
           </div>
           <button type="submit">Register</button>
           <div class="toggle-auth">
@@ -211,9 +211,9 @@
         </div>
       </div>
     </div>
-    </div>  <!-- End of adminPortal -->
+  </div>
 
-<!-- ADD THIS ENTIRE STUDENT PORTAL SECTION HERE -->
+  <!-- Student Portal -->
   <div id="studentPortal" class="page">
     <div class="container">
       <div class="header">
@@ -221,36 +221,79 @@
         <p id="studentWelcome">Welcome back, Student!</p>
         <button class="logout-btn" onclick="logout()">🚪 Logout</button>
       </div>
-      <!-- ... rest of student portal HTML ... -->
+
+      <div class="content">
+        <div class="stats">
+          <div class="stat-card">
+            <div class="stat-number" id="enrolledCount">0</div>
+            <div class="stat-label">Enrolled Courses</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" id="availableCount">0</div>
+            <div class="stat-label">Available Courses</div>
+          </div>
+        </div>
+
+        <div class="section">
+          <h2>Available Subjects</h2>
+          <div class="form-row">
+            <button onclick="loadAvailableSubjects()" class="btn-info">📋 Show Available Subjects</button>
+            <button onclick="loadMyEnrollments()" class="btn-info">📚 My Enrollments</button>
+          </div>
+        </div>
+
+        <div class="section">
+          <h2>Enroll in Subject</h2>
+          <div class="form-row">
+            <input type="text" id="enrollSubjectName" placeholder="Enter Subject Name" />
+            <button onclick="enrollInSubject()">➕ Enroll</button>
+          </div>
+        </div>
+
+        <div class="section">
+          <h2>View Trainer Details</h2>
+          <div class="form-row">
+            <input type="text" id="searchSubject" placeholder="Search by Subject" />
+            <button onclick="viewTrainersBySubject()" class="btn-info">🔍 Search Trainers</button>
+          </div>
+        </div>
+
+        <div class="output-section">
+          <h3>Course Information</h3>
+          <div id="studentOutputArea">
+            <div class="empty-state">
+              <p>Welcome! Browse available courses and enroll to get started.</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-  </div>
 
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
 
-<!-- Firebase Configuration & Initialization -->
-<script>
-  // Your Firebase Config
-  const firebaseConfig = {
-    apiKey: "AIzaSyAVKpzslG2vQZw-LK6wTAmWj5mm7aGGPkQ",
-    authDomain: "nexanova-c3fd1.firebaseapp.com",
-    projectId: "nexanova-c3fd1",
-    storageBucket: "nexanova-c3fd1.firebasestorage.app",
-    messagingSenderId: "747203123201",
-    appId: "1:747203123201:web:f23cd9b4dc1b027660c800",
-    measurementId: "G-7KVT25JS4R"
-  };
+  <!-- Firebase Configuration -->
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyAVKpzslG2vQZw-LK6wTAmWj5mm7aGGPkQ",
+      authDomain: "nexanova-c3fd1.firebaseapp.com",
+      projectId: "nexanova-c3fd1",
+      storageBucket: "nexanova-c3fd1.appspot.com",
+      messagingSenderId: "747203123201",
+      appId: "1:747203123201:web:f23cd9b4dc1b027660c800",
+      measurementId: "G-7KVT25JS4R"
+    };
 
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  
-  // Initialize Firebase Auth
-  const auth = firebase.auth();
-  
-  console.log('🔥 Firebase initialized successfully!');
-</script>
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+    console.log('🔥 Firebase initialized successfully!');
+  </script>
 
-<!-- Your App Logic -->
-<script src="management_js.js"></script>
-
+  <!-- Application Logic -->
+  <script src="management_js.js"></script>
 </body>
 </html>

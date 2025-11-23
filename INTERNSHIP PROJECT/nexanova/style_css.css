@@ -12,16 +12,28 @@ body {
   color: #333;
 }
 
-/* Hide all pages initially */
+/* ========== PAGE MANAGEMENT ========== */
 .page {
   display: none;
+  animation: fadeIn 0.5s ease-in-out;
 }
 
 .page.active {
   display: block;
 }
 
-/* Landing Page Styles */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========== LANDING PAGE STYLES ========== */
 .landing-container {
   background: white;
   border-radius: 20px;
@@ -79,6 +91,16 @@ body {
 .role-icon {
   font-size: 4em;
   margin-bottom: 20px;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 .role-card h2 {
@@ -111,7 +133,7 @@ body {
   box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
 }
 
-/* Auth Container Styles */
+/* ========== AUTH CONTAINER STYLES ========== */
 .auth-container {
   background: white;
   border-radius: 20px;
@@ -135,6 +157,7 @@ body {
 
 .auth-header p {
   opacity: 0.9;
+  font-size: 1em;
 }
 
 .auth-body {
@@ -168,6 +191,10 @@ body {
   box-shadow: 0 0 10px rgba(76, 175, 80, 0.2);
 }
 
+.form-group input::placeholder {
+  color: #adb5bd;
+}
+
 .toggle-auth {
   text-align: center;
   margin-top: 20px;
@@ -180,10 +207,12 @@ body {
   text-decoration: none;
   font-weight: 600;
   cursor: pointer;
+  transition: color 0.3s ease;
 }
 
 .toggle-auth a:hover {
   text-decoration: underline;
+  color: #45a049;
 }
 
 .back-btn {
@@ -196,7 +225,7 @@ body {
   box-shadow: 0 5px 15px rgba(108, 117, 125, 0.4);
 }
 
-/* Management Portal Styles */
+/* ========== MANAGEMENT PORTAL STYLES ========== */
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -237,17 +266,20 @@ body {
   cursor: pointer;
   font-weight: 600;
   transition: all 0.3s ease;
+  font-size: 14px;
 }
 
 .logout-btn:hover {
   background: #d32f2f;
   transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(244, 67, 54, 0.4);
 }
 
 .content {
   padding: 30px;
 }
 
+/* ========== STATISTICS CARDS ========== */
 .stats {
   display: flex;
   gap: 20px;
@@ -257,14 +289,20 @@ body {
 .stat-card {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
-  padding: 20px;
+  padding: 25px;
   border-radius: 10px;
   text-align: center;
   flex: 1;
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
 }
 
 .stat-number {
-  font-size: 2em;
+  font-size: 2.5em;
   font-weight: bold;
   margin-bottom: 5px;
 }
@@ -272,14 +310,18 @@ body {
 .stat-label {
   font-size: 0.9em;
   opacity: 0.9;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
+/* ========== SECTIONS ========== */
 .section {
   background: #f8f9fa;
   border-radius: 10px;
   padding: 25px;
   margin-bottom: 25px;
   border-left: 5px solid #4CAF50;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
 .section h2 {
@@ -296,6 +338,7 @@ body {
   font-size: 1.2em;
 }
 
+/* ========== FORM ELEMENTS ========== */
 .form-row {
   display: flex;
   flex-wrap: wrap;
@@ -318,6 +361,10 @@ input:focus {
   outline: none;
   border-color: #4CAF50;
   box-shadow: 0 0 10px rgba(76, 175, 80, 0.2);
+}
+
+input::placeholder {
+  color: #adb5bd;
 }
 
 button {
@@ -358,11 +405,13 @@ button:active {
   box-shadow: 0 5px 15px rgba(33, 150, 243, 0.4);
 }
 
+/* ========== OUTPUT SECTION ========== */
 .output-section {
   background: white;
   border-radius: 10px;
   padding: 25px;
   border: 2px solid #e0e0e0;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
 .output-section h3 {
@@ -378,6 +427,7 @@ button:active {
   margin-right: 10px;
 }
 
+/* ========== TABLES ========== */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -403,6 +453,7 @@ td {
   padding: 12px;
   border-bottom: 1px solid #eee;
   transition: background-color 0.2s ease;
+  color: #2c3e50;
 }
 
 tr:hover td {
@@ -413,11 +464,28 @@ tr:nth-child(even) td {
   background-color: #fafafa;
 }
 
+tr:last-child td {
+  border-bottom: none;
+}
+
+/* ========== MESSAGES ========== */
 .message {
   padding: 15px;
   border-radius: 8px;
   margin: 15px 0;
   font-weight: 500;
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .message.success {
@@ -438,6 +506,7 @@ tr:nth-child(even) td {
   border-left: 4px solid #17a2b8;
 }
 
+/* ========== EMPTY STATE ========== */
 .empty-state {
   text-align: center;
   padding: 40px 20px;
@@ -449,15 +518,54 @@ tr:nth-child(even) td {
   font-size: 3em;
   display: block;
   margin-bottom: 15px;
+  opacity: 0.5;
 }
 
+.empty-state p {
+  font-size: 1em;
+  opacity: 0.8;
+}
+
+/* ========== ENROLLMENT BADGE ========== */
+.enrollment-badge {
+  display: inline-block;
+  padding: 5px 10px;
+  background: #4CAF50;
+  color: white;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-left: 10px;
+}
+
+/* ========== ACTION BUTTONS ========== */
+.action-btn {
+  padding: 6px 12px;
+  font-size: 12px;
+  margin: 2px;
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
 @media (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+
   .role-selection {
     flex-direction: column;
+    padding: 30px 20px;
   }
   
   .role-card {
     max-width: 100%;
+  }
+
+  .role-card h2 {
+    font-size: 1.5em;
+  }
+
+  .role-icon {
+    font-size: 3em;
   }
   
   .form-row {
@@ -469,7 +577,7 @@ tr:nth-child(even) td {
   }
   
   table {
-    font-size: 14px;
+    font-size: 12px;
   }
   
   th, td {
@@ -478,143 +586,131 @@ tr:nth-child(even) td {
   
   .logout-btn {
     position: static;
-    margin-top: 10px;
-    width: auto;
+    margin-top: 15px;
+    width: 100%;
   }
   
   .stats {
     flex-direction: column;
   }
-  /* Page Management */
-.page {
+
+  .stat-card {
+    margin-bottom: 10px;
+  }
+  
+  .header h1 {
+    font-size: 1.8em;
+  }
+
+  .header p {
+    font-size: 0.9em;
+  }
+  
+  .landing-header h1 {
+    font-size: 2em;
+  }
+
+  .landing-header p {
+    font-size: 0.95em;
+  }
+
+  .auth-container {
+    margin: 10px;
+  }
+
+  .auth-body {
+    padding: 25px;
+  }
+
+  .content {
+    padding: 20px;
+  }
+
+  .section {
+    padding: 20px;
+  }
+
+  .output-section {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .landing-header h1 {
+    font-size: 1.6em;
+  }
+
+  .header h1 {
+    font-size: 1.5em;
+  }
+
+  .stat-number {
+    font-size: 2em;
+  }
+
+  .section h2 {
+    font-size: 1.2em;
+  }
+
+  table {
+    font-size: 11px;
+  }
+
+  th, td {
+    padding: 8px 5px;
+  }
+}
+
+/* ========== SCROLLBAR STYLING ========== */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+}
+
+/* ========== LOADING ANIMATION ========== */
+.loading {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255,255,255,.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ========== UTILITY CLASSES ========== */
+.text-center {
+  text-align: center;
+}
+
+.mt-20 {
+  margin-top: 20px;
+}
+
+.mb-20 {
+  margin-bottom: 20px;
+}
+
+.hidden {
   display: none;
 }
 
-.page.active {
+.visible {
   display: block;
-}
-
-/* Auth Styles */
-.landing-container {
-  max-width: 1000px;
-  margin: 0 auto;
-  background: white;
-  border-radius: 20px;
-  box-shadow: 0 30px 60px rgba(0,0,0,0.3);
-  overflow: hidden;
-}
-
-.landing-header {
-  background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
-  color: white;
-  padding: 40px;
-  text-align: center;
-}
-
-.landing-header h1 {
-  font-size: 2.5em;
-  margin-bottom: 10px;
-}
-
-.role-selection {
-  padding: 50px 40px;
-  display: flex;
-  gap: 30px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.role-card {
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-  border-radius: 15px;
-  padding: 40px 30px;
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  border: 3px solid transparent;
-  flex: 1;
-  min-width: 250px;
-  max-width: 350px;
-}
-
-.role-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-  border-color: #4CAF50;
-}
-
-.role-icon {
-  font-size: 4em;
-  margin-bottom: 20px;
-}
-
-.role-btn {
-  width: 100%;
-}
-
-.auth-container {
-  max-width: 450px;
-  margin: 0 auto;
-  background: white;
-  border-radius: 20px;
-  box-shadow: 0 30px 60px rgba(0,0,0,0.3);
-  overflow: hidden;
-}
-
-.auth-header {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  padding: 30px;
-  text-align: center;
-}
-
-.auth-body {
-  padding: 40px;
-}
-
-.form-group {
-  margin-bottom: 20px;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: 600;
-  color: #2c3e50;
-}
-
-.toggle-auth {
-  text-align: center;
-  margin-top: 20px;
-  color: #6c757d;
-}
-
-.toggle-auth a {
-  color: #4CAF50;
-  cursor: pointer;
-  text-decoration: none;
-  font-weight: 600;
-}
-
-.toggle-auth a:hover {
-  text-decoration: underline;
-}
-
-.back-btn {
-  width: 100%;
-  background: linear-gradient(135deg, #6c757d 0%, #5a6268 100%);
-  margin-bottom: 20px;
-}
-
-.logout-btn {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background: #f44336;
-}
-
-.logout-btn:hover {
-  background: #d32f2f;
-}
-
 }
