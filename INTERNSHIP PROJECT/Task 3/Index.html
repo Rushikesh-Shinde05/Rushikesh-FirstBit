@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mock Evaluation System</title>
+    <link rel="stylesheet" href="Style.css">
+</head>
+<body>
+    <!-- Login Screen -->
+    <div id="loginScreen" class="login-container">
+        <div class="login-card">
+            <h2>Mock Evaluation System</h2>
+            <div id="loginMessage"></div>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="loginEmail" required value="admin@test.com">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="loginPassword" required value="admin123">
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
+            </form>
+            <div style="margin-top: 20px; padding: 15px; background: #f0f9ff; border-radius: 5px; border-left: 4px solid #667eea;">
+                <p style="margin: 0; color: #1e40af; font-weight: 600;">📌 Demo Credentials:</p>
+                <p style="margin: 5px 0 0 0; color: #1e3a8a;">
+                    <strong>Admin:</strong> admin@test.com / admin123<br>
+                    <strong>Evaluator:</strong> evaluator@test.com / eval123
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main App -->
+    <div id="mainApp" class="hidden">
+        <div class="container">
+            <div class="header">
+                <h1>Mock Evaluation System</h1>
+                <div class="user-info">
+                    <span id="userName"></span>
+                    <span id="userRole" style="padding: 5px 10px; background: #667eea; color: white; border-radius: 5px; font-size: 12px; margin-left: 10px;"></span>
+                    <button class="btn btn-danger" onclick="logout()">Logout</button>
+                </div>
+            </div>
+
+            <!-- Admin Dashboard -->
+            <div id="adminDashboard" class="hidden">
+                <div class="tabs">
+                    <button class="tab active" onclick="showTab('dashboard')">Dashboard</button>
+                    <button class="tab" onclick="showTab('batches')">Batches</button>
+                    <button class="tab" onclick="showTab('technologies')">Technologies</button>
+                    <button class="tab" onclick="showTab('participants')">Participants</button>
+                    <button class="tab" onclick="showTab('users')">Users</button>
+                    <button class="tab" onclick="showTab('reports')">Reports</button>
+                </div>
+
+                <!-- Dashboard Tab -->
+                <div id="dashboardTab" class="tab-content">
+                    <div class="grid">
+                        <div class="stat-card">
+                            <h3 id="totalBatches">0</h3>
+                            <p>Total Batches</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3 id="totalTechnologies">0</h3>
+                            <p>Technologies</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3 id="totalParticipants">0</h3>
+                            <p>Participants</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Batches Tab -->
+                <div id="batchesTab" class="tab-content hidden">
+                    <div class="card">
+                        <h2>Create Batch</h2>
+                        <div id="batchMessage"></div>
+                        <form id="batchForm">
+                            <div class="form-group">
+                                <label>Batch Name</label>
+                                <input type="text" id="batchName" required placeholder="e.g., Batch 2025-A">
+                            </div>
+                            <div class="form-group">
+                                <label>Start Date</label>
+                                <input type="date" id="batchStart" required>
+                            </div>
+                            <div class="form-group">
+                                <label>End Date</label>
+                                <input type="date" id="batchEnd" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Create Batch</button>
+                        </form>
+                    </div>
+                    <div class="card">
+                        <h2>Existing Batches</h2>
+                        <table id="batchesTable">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Start Date</th>
+                                    <th>End Date</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Technologies Tab -->
+                <div id="technologiesTab" class="tab-content hidden">
+                    <div class="card">
+                        <h2>Add Technology</h2>
+                        <div id="techMessage"></div>
+                        <form id="techForm">
+                            <div class="form-group">
+                                <label>Technology Name</label>
+                                <input type="text" id="techName" required placeholder="e.g., Java, Python, React">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Add Technology</button>
+                        </form>
+                    </div>
+                    <div class="card">
+                        <h2>Configure Evaluation Rounds</h2>
+                        <div id="configMessage"></div>
+                        <form id="configForm">
+                            <div class="form-group">
+                                <label>Technology</label>
+                                <select id="configTech" required>
+                                    <option value="">Select Technology</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Number of Rounds</label>
+                                <input type="number" id="configRounds" min="1" max="10" required placeholder="e.g., 3">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Configure Rounds</button>
+                        </form>
+                    </div>
+                    <div class="card">
+                        <h2>Existing Technologies</h2>
+                        <table id="techTable">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Rounds Configured</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Participants Tab -->
+                <div id="participantsTab" class="tab-content hidden">
+                    <div class="card">
+                        <h2>Add Participant</h2>
+                        <div id="participantMessage"></div>
+                        <form id="participantForm">
+                            <div class="form-group">
+                                <label>Name</label>
+                                <input type="text" id="participantName" required placeholder="e.g., John Doe">
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" id="participantEmail" required placeholder="john.doe@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label>Batch</label>
+                                <select id="participantBatch" required>
+                                    <option value="">Select Batch</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Technology</label>
+                                <select id="participantTech" required>
+                                    <option value="">Select Technology</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Add Participant</button>
+                        </form>
+                    </div>
+    <div class="card">
+  <h2>Assign Evaluator</h2>
+  <div id="assignMessage"></div>
+  <form id="assignForm">
+      <div class="form-group">
+          <label>Participant</label>
+          <select id="assignParticipant"></select>
+      </div>
+
+      <div class="form-group">
+          <label>Evaluator</label>
+          <select id="assignEvaluator"></select>
+      </div>
+
+      <div class="form-group">
+          <label>Round</label>
+          <input type="number" id="assignRound" min="1" required>
+      </div>
+
+      <button class="btn btn-primary">Assign Evaluator</button>
+  </form>
+</div>
+
+                    <div class="card">
+                        <h2>All Participants</h2>
+                        <table id="participantsTable">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Batch</th>
+                                    <th>Technology</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Users Tab -->
+                <div id="usersTab" class="tab-content hidden">
+                    <div class="card">
+                        <h2>Create User</h2>
+                        <div id="userMessage"></div>
+                        <form id="userForm">
+                            <div class="form-group">
+                                <label>Name</label>
+                                <input type="text" id="userFullName" required placeholder="e.g., Jane Smith">
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" id="userEmail" required placeholder="jane.smith@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label>Password</label>
+                                <input type="password" id="userPassword" required placeholder="Minimum 6 characters">
+                            </div>
+                            <div class="form-group">
+                                <label>Role</label>
+                                <select id="userRole" required>
+                                    <option value="evaluator">Evaluator</option>
+                                    <option value="admin">Admin</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Create User</button>
+                        </form>
+                    </div>
+                    <div class="card">
+                        <h2>All Users</h2>
+                        <table id="usersTable">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Role</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Reports Tab -->
+                <div id="reportsTab" class="tab-content hidden">
+                    <div class="card">
+                        <h2>Generate Report</h2>
+                        <div class="form-group">
+                            <label>Batch</label>
+                            <select id="reportBatch">
+                                <option value="">Select Batch</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Technology</label>
+                            <select id="reportTech">
+                                <option value="">Select Technology</option>
+                            </select>
+                        </div>
+                        <button class="btn btn-primary" onclick="generateReport()">Generate Report</button>
+                        <button class="btn btn-success" onclick="exportReportCSV()" style="margin-left: 10px;">Export to CSV</button>
+                    </div>
+                    <div class="card">
+                        <h2>Report Results</h2>
+                        <div id="reportResults"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Evaluator Dashboard -->
+            <div id="evaluatorDashboard" class="hidden">
+                <div class="card">
+                    <h2>Assigned Participants</h2>
+                    <table id="assignedTable">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Batch</th>
+                                <th>Technology</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+
+                <div id="evaluationForm" class="card hidden">
+                    <h2>Conduct Evaluation</h2>
+                    <div id="evalMessage"></div>
+                    <form id="evaluationSubmitForm">
+                        <input type="hidden" id="evalParticipantId">
+                        <input type="hidden" id="evalTechId">
+                        <div class="form-group">
+                            <label>Participant Name</label>
+                            <input type="text" id="evalParticipantName" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label>Round Number</label>
+                            <input type="number" id="evalRound" min="1" required placeholder="e.g., 1, 2, 3">
+                        </div>
+                        <div class="form-group">
+                            <label>Score (0-100)</label>
+                            <input type="number" id="evalScore" min="0" max="100" required placeholder="Enter score out of 100">
+                        </div>
+                        <div class="form-group">
+                            <label>Comments/Feedback</label>
+                            <textarea id="evalComments" required placeholder="Enter your evaluation feedback here..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-success">Submit Evaluation</button>
+                        <button type="button" class="btn btn-danger" onclick="closeEvalForm()">Cancel</button>
+                    </form>
+                </div>
+
+                <div class="card">
+                    <h2>My Evaluation History</h2>
+                    <table id="evalHistoryTable">
+                        <thead>
+                            <tr>
+                                <th>Participant</th>
+                                <th>Technology</th>
+                                <th>Round</th>
+                                <th>Score</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

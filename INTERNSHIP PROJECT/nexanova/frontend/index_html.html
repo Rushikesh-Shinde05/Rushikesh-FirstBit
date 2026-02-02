@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NexaNova LMS - Complete Edition</title>
+  <link rel="stylesheet" href="style_css.css">
+</head>
+<body>
+  <!-- Landing Page -->
+  <div id="landingPage" class="page active">
+    <div class="landing-container">
+      <div class="landing-header">
+        <h1>🎓 NexaNova LMS</h1>
+        <p>Complete Learning Management System</p>
+      </div>
+      <div class="role-selection">
+        <div class="role-card" onclick="showAuth('admin')">
+          <div class="role-icon">👨‍💼</div>
+          <h2>Admin Portal</h2>
+          <p>Manage trainers, courses, schedules, and enrollments</p>
+          <button class="role-btn">Access Admin Portal</button>
+        </div>
+        <div class="role-card" onclick="showAuth('student')">
+          <div class="role-icon">👨‍🎓</div>
+          <h2>Student Portal</h2>
+          <p>View your personalized weekly timetable</p>
+          <button class="role-btn">Access Student Portal</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Admin Auth Page -->
+  <div id="adminAuthPage" class="page">
+    <div class="auth-container">
+      <div class="auth-header">
+        <h2>👨‍💼 Admin Access</h2>
+        <p id="adminAuthTitle">Login to your account</p>
+      </div>
+      <div class="auth-body">
+        <button class="back-btn" onclick="showPage('landingPage')">← Back to Home</button>
+        <div id="adminMessage" class="message" style="display: none;"></div>
+        
+        <form id="adminLoginForm">
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" id="adminLoginEmail" placeholder="admin@nexanova.com" required>
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" id="adminLoginPassword" placeholder="Enter password" required>
+          </div>
+          <button type="submit">Login</button>
+          <div class="toggle-auth">
+            Don't have an account? <a onclick="toggleAdminAuth()">Register here</a>
+          </div>
+        </form>
+
+        <form id="adminRegisterForm" style="display: none;">
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" id="adminRegName" placeholder="John Doe" required>
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" id="adminRegEmail" placeholder="admin@nexanova.com" required>
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" id="adminRegPassword" placeholder="Create password" required>
+          </div>
+          <button type="submit">Register</button>
+          <div class="toggle-auth">
+            Already have an account? <a onclick="toggleAdminAuth()">Login here</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Student Auth Page -->
+  <div id="studentAuthPage" class="page">
+    <div class="auth-container">
+      <div class="auth-header">
+        <h2>👨‍🎓 Student Access</h2>
+        <p id="studentAuthTitle">Login to your account</p>
+      </div>
+      <div class="auth-body">
+        <button class="back-btn" onclick="showPage('landingPage')">← Back to Home</button>
+        <div id="studentMessage" class="message" style="display: none;"></div>
+        
+        <form id="studentLoginForm">
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" id="studentLoginEmail" placeholder="student@example.com" required>
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" id="studentLoginPassword" placeholder="Enter password" required>
+          </div>
+          <button type="submit">Login</button>
+          <div class="toggle-auth">
+            Don't have an account? <a onclick="toggleStudentAuth()">Register here</a>
+          </div>
+        </form>
+
+        <form id="studentRegisterForm" style="display: none;">
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" id="studentRegName" placeholder="Jane Smith" required>
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" id="studentRegEmail" placeholder="student@example.com" required>
+          </div>
+          <div class="form-group">
+            <label>Roll Number</label>
+            <input type="text" id="studentRegRoll" placeholder="2024001" required>
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" id="studentRegPassword" placeholder="Create password" required>
+          </div>
+          <button type="submit">Register</button>
+          <div class="toggle-auth">
+            Already have an account? <a onclick="toggleStudentAuth()">Login here</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Admin Portal -->
+  <div id="adminPortal" class="page">
+    <div class="container">
+      <div class="header">
+        <h1>NexaNova Admin Portal</h1>
+        <p id="adminWelcome">Complete Management System</p>
+        <button class="logout-btn" onclick="logout()">🚪 Logout</button>
+      </div>
+
+      <!-- Tab Navigation -->
+      <div class="tabs">
+        <button class="tab-btn active" onclick="switchTab('trainers')">👨‍🏫 Trainers</button>
+        <button class="tab-btn" onclick="switchTab('subjects')">📖 Subjects</button>
+        <button class="tab-btn" onclick="switchTab('courses')">📚 Courses</button>
+        <button class="tab-btn" onclick="switchTab('schedule')">📅 Schedule</button>
+        <button class="tab-btn" onclick="switchTab('enrollment')">📝 Enrollment</button>
+        <button class="tab-btn" onclick="switchTab('students')">👥 Students</button>
+      </div>
+
+      <div class="content">
+        <!-- Trainers Tab -->
+        <div id="trainersTab" class="tab-content active">
+          <div class="stats">
+            <div class="stat-card">
+              <div class="stat-number" id="trainerCount">0</div>
+              <div class="stat-label">Total Trainers</div>
+            </div>
+          </div>
+
+          <div class="section">
+            <h2>Trainer Management</h2>
+            <div class="form-row">
+              <input type="text" id="trainerName" placeholder="Trainer Name" />
+              <input type="text" id="trainerId" placeholder="Employee ID" />
+              <input type="text" id="trainerSubject" placeholder="Subject" />
+              <button onclick="addTrainer()">➕ Add Trainer</button>
+            </div>
+
+            <div class="form-row">
+              <button onclick="getAllTrainers()" class="btn-info">👥 Show All Trainers</button>
+              <input type="text" id="getTrainerId" placeholder="Search by Employee ID" />
+              <button onclick="getTrainerById()" class="btn-info">🔍 Search</button>
+            </div>
+
+            <div class="form-row">
+              <input type="text" id="getTrainerSubject" placeholder="Filter by Subject" />
+              <button onclick="getTrainerBySubject()" class="btn-info">📚 Filter</button>
+              <input type="text" id="deleteTrainerId" placeholder="Delete by Employee ID" />
+              <button onclick="deleteTrainer()" class="btn-danger">🗑️ Delete</button>
+            </div>
+          </div>
+
+          <div class="output-section">
+            <h3>Trainer Data</h3>
+            <div id="trainersOutput"></div>
+          </div>
+        </div>
+
+        <!-- Subjects Tab -->
+        <div id="subjectsTab" class="tab-content">
+          <div class="stats">
+            <div class="stat-card">
+              <div class="stat-number" id="subjectCount">0</div>
+              <div class="stat-label">Total Subjects</div>
+            </div>
+          </div>
+
+          <div class="section">
+            <h2>Subject Management</h2>
+            <div class="form-row">
+              <input type="text" id="subjectName" placeholder="Subject Name" />
+              <button onclick="addSubject()">➕ Add Subject</button>
+              <button onclick="getAllSubjects()" class="btn-info">📋 Show All Subjects</button>
+            </div>
+
+            <div class="form-row">
+              <input type="text" id="subjectId" placeholder="Subject Name for Details" />
+              <button onclick="getSubjectDetails()" class="btn-info">🔍 Get Subject Details</button>
+            </div>
+          </div>
+
+          <div class="output-section">
+            <h3>Subject Data</h3>
+            <div id="subjectsOutput"></div>
+          </div>
+        </div>
+
+        <!-- Courses Tab -->
+        <div id="coursesTab" class="tab-content">
+          <div class="section">
+            <h2>Course Management</h2>
+            <div class="form-row">
+              <input type="text" id="courseName" placeholder="Course Name" />
+              <input type="text" id="courseDesc" placeholder="Description" />
+              <input type="text" id="courseDuration" placeholder="Duration (e.g., 6 months)" />
+              <button onclick="createCourse()">➕ Create Course</button>
+            </div>
+            <button onclick="loadCourses()" class="btn-info">📋 Show All Courses</button>
+          </div>
+
+          <div class="section">
+            <h2>Module Management</h2>
+            <div class="form-row">
+              <select id="modulesCourseSelect">
+                <option value="">Select Course</option>
+              </select>
+              <input type="text" id="moduleName" placeholder="Module Name" />
+              <input type="text" id="moduleDesc" placeholder="Description" />
+              <button onclick="addModule()">➕ Add Module</button>
+            </div>
+          </div>
+
+          <div class="output-section">
+            <h3>Course & Module Data</h3>
+            <div id="coursesOutput"></div>
+          </div>
+        </div>
+
+        <!-- Schedule Tab -->
+        <div id="scheduleTab" class="tab-content">
+          <div class="section">
+            <h2>Weekly Schedule Management</h2>
+            <div class="form-row">
+              <input type="date" id="scheduleStartDate" />
+              <button onclick="createSchedule()">📅 Create Weekly Schedule</button>
+              <button onclick="loadCurrentSchedule()" class="btn-info">👁️ View Current Week</button>
+            </div>
+          </div>
+
+          <div class="section">
+            <h2>Time Slot Allocation</h2>
+            <div class="form-row">
+              <input type="text" id="slotId" placeholder="Slot ID (from schedule)" />
+              <select id="slotCourseSelect"><option value="">Select Course</option></select>
+              <select id="slotModuleSelect"><option value="">Select Module</option></select>
+            </div>
+            <div class="form-row">
+              <input type="text" id="slotTrainerId" placeholder="Trainer ID" />
+              <input type="text" id="slotTrainerName" placeholder="Trainer Name" />
+              <button onclick="allocateSlot()">🎯 Allocate Slot</button>
+            </div>
+          </div>
+
+          <div class="output-section">
+            <h3>Schedule View</h3>
+            <div id="scheduleOutput"></div>
+          </div>
+        </div>
+
+        <!-- Enrollment Tab -->
+        <div id="enrollmentTab" class="tab-content">
+          <div class="section">
+            <h2>Single Enrollment</h2>
+            <div class="form-row">
+              <input type="text" id="enrollStudentId" placeholder="Student ID" />
+              <select id="enrollCourseSelect"><option value="">Select Course</option></select>
+              <button onclick="enrollStudent()">✅ Enroll Student</button>
+            </div>
+          </div>
+
+          <div class="section">
+            <h2>Bulk Enrollment</h2>
+            <div class="form-row">
+              <textarea id="bulkStudentIds" placeholder="Student IDs (one per line)" rows="3"></textarea>
+              <select id="bulkEnrollCourseSelect"><option value="">Select Course</option></select>
+              <button onclick="bulkEnrollStudents()">📦 Bulk Enroll</button>
+            </div>
+          </div>
+
+          <div class="section">
+            <h2>Enrollment Statistics</h2>
+            <button onclick="loadEnrollmentStats()" class="btn-info">📊 View Statistics</button>
+          </div>
+
+          <div class="output-section">
+            <h3>Enrollment Data</h3>
+            <div id="enrollmentOutput"></div>
+          </div>
+        </div>
+
+        <!-- Students Tab -->
+        <div id="studentsTab" class="tab-content">
+          <div class="section">
+            <h2>Bulk Upload Students</h2>
+            <div class="form-row">
+              <input type="file" id="csvFile" accept=".csv" />
+              <button onclick="uploadCSV()">📤 Upload CSV</button>
+            </div>
+            <p style="font-size: 12px; color: #666; margin-top: 10px;">
+              CSV Format: name,email,password,rollNumber
+            </p>
+          </div>
+
+          <div class="section">
+            <h2>View Students</h2>
+            <button onclick="loadAllStudents()" class="btn-info">👥 Show All Students</button>
+          </div>
+
+          <div class="output-section">
+            <h3>Student Data</h3>
+            <div id="studentsOutput"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Student Portal -->
+  <div id="studentPortal" class="page">
+    <div class="container">
+      <div class="header">
+        <h1>📚 NexaNova Student Portal</h1>
+        <p id="studentWelcome">Welcome back, Student!</p>
+        <button class="logout-btn" onclick="logout()">🚪 Logout</button>
+      </div>
+
+      <div class="content">
+        <div class="stats">
+          <div class="stat-card">
+            <div class="stat-number" id="enrolledCount">0</div>
+            <div class="stat-label">Enrolled Courses</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" id="weeklyClasses">0</div>
+            <div class="stat-label">Weekly Classes</div>
+          </div>
+        </div>
+
+        <div class="section">
+          <h2>My Weekly Timetable</h2>
+          <button onclick="loadMyTimetable()" class="btn-info">📅 Load This Week's Timetable</button>
+          <button onclick="loadTimetableSummary()" class="btn-info">📊 View Summary</button>
+        </div>
+
+        <div class="output-section">
+          <h3>Your Schedule</h3>
+          <div id="timetableOutput"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="management_js.js"></script>
+</body>
+</html>
